@@ -61,15 +61,10 @@ var DoubleSpring = (function(){
     if(!this.ball1Dragging) {
       this.springTo(this.ball1, this.ball0);
     }
-    sprite.context.save();
-    sprite.context.translate(0, 0);
-    sprite.context.rotate(0);
-    sprite.context.scale(1, 1);
     sprite.context.beginPath();
     sprite.context.moveTo(this.ball0.x, this.ball0.y);
     sprite.context.lineTo(this.ball1.x, this.ball1.y);
     sprite.context.stroke();
-    sprite.context.restore();
   };
   p.springTo = function(ballA, ballB) {
     var dx      = ballB.x - ballA.x;

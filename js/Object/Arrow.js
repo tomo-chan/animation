@@ -8,8 +8,8 @@ var Arrow = (function(){
   Arrow.prototype.constructor = Arrow;
   Arrow.prototype.getBounds = function(){
     return {
-      "x": this.x,
-      "y": this.y,
+      "x": this.x - 50,
+      "y": this.y - 50,
       "width": 100,
       "height": 100
     };

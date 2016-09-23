@@ -10,8 +10,8 @@ var Ship = (function(){
   Ship.prototype.constructor = Ship;
   Ship.prototype.getBounds = function(){
     return {
-      "x": this.x,
-      "y": this.y,
+      "x": this.x - this.width / 2,
+      "y": this.y - this.height / 2,
       "width": this.width,
       "height": this.height
     };
