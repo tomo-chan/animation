@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Animation</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <div id="contents">
+    <canvas id="canvas" width="600px" height="300px"></canvas>
+  </div>
+  <div id="animeBtns"></div>
+  <div>
+    <input type="button" id="startBtn" name="startBtn" value="スタート">
+    <input type="button" id="stopBtn" name="stopBtn" value="ストップ">
+    <span id="info"></span>
+  </div>
+  <script src="/js/Render.js" type="text/javascript"></script>
+  <script src="/js/Object/Sprite.js" type="text/javascript"></script>
+  <script src="/js/Object/Arrow.js" type="text/javascript"></script>
+  <script src="/js/Object/Ball.js" type="text/javascript"></script>
+  <script src="/js/Object/Ship.js" type="text/javascript"></script>
+  <script src="/js/ChapterBase.js" type="text/javascript"></script>
+  <script src="/js/Chapter03/01_RotateToMouse.js" type="text/javascript"></script>
+  <script src="/js/Chapter03/02_Bobbing.js" type="text/javascript"></script>
+  <script src="/js/Chapter03/03_Wave1.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/01_Velocity1.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/02_Velocity2.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/03_VelocityAngle.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/04_FollowMouse.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/05_Acceleration1.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/06_Acceleration2.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/07_Acceleration3.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/08_Gravity.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/09_FollowMouse2.js" type="text/javascript"></script>
+  <script src="/js/Chapter05/10_ShipSim.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/01_Removal.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/02_Fountain.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/03_ShipSim2.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/04_Bouncing.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/05_Bouncing2.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/06_Friction1.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/07_Friction2.js" type="text/javascript"></script>
+  <script src="/js/Chapter06/08_ShipSimFriction.js" type="text/javascript"></script>
+  <script src="/js/Chapter07/01_MouseEvents.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/01_Easing1.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/02_Easing2.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/03_EasingOff.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/04_EasingToMouse.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/05_Spring1.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/06_Spring2.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/07_Spring3.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/08_Spring4.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/09_Spring5.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/10_Chain.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/11_MultiSpring.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/12_OffsetSpring.js" type="text/javascript"></script>
+  <script src="/js/Chapter08/13_DoubleSpring.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    (function(){
+      var canvas   = document.getElementById('canvas');
+      var render   = new Render(canvas);
+
+      var animeMap = {};
+      animeMap.C3 = {};
+      animeMap.C3[1]  = RotateToMouse;
+      animeMap.C3[2]  = Bobbing;
+      animeMap.C3[3]  = Wave1;
+      animeMap.C5 = {};
+      animeMap.C5[1]  = Velocity1;
+      animeMap.C5[2]  = Velocity2;
+      animeMap.C5[3]  = VelocityAngle;
+      animeMap.C5[4]  = FollowMouse;
+      animeMap.C5[5]  = Acceleration1;
+      animeMap.C5[6]  = Acceleration2;
+      animeMap.C5[7]  = Acceleration3;
+      animeMap.C5[8]  = Gravity;
+      animeMap.C5[9]  = FollowMouse2;
+      animeMap.C5[10] = ShipSim;
+      animeMap.C6 = {};
+      animeMap.C6[1]  = Removal;
+      animeMap.C6[2]  = Fountain;
+      animeMap.C6[3]  = ShipSim2;
+      animeMap.C6[4]  = Bouncing;
+      animeMap.C6[5]  = Bouncing2;
+      animeMap.C6[6]  = Friction1;
+      animeMap.C6[7]  = Friction2;
+      animeMap.C6[8]  = ShipSimFriction;
+      animeMap.C7 = {};
+      animeMap.C7[1]  = MouseEvents;
+      animeMap.C8 = {};
+      animeMap.C8[1]  = Easing1;
+      animeMap.C8[2]  = Easing2;
+      animeMap.C8[3]  = EasingOff;
+      animeMap.C8[4]  = EasingToMouse;
+      animeMap.C8[5]  = Spring1;
+      animeMap.C8[6]  = Spring2;
+      animeMap.C8[7]  = Spring3;
+      animeMap.C8[8]  = Spring4;
+      animeMap.C8[9]  = Spring5;
+      animeMap.C8[10] = Chain;
+      animeMap.C8[11] = MultiSpring;
+      animeMap.C8[12] = OffsetSpring;
+      animeMap.C8[13] = DoubleSpring;
+
+      var br = document.createElement('br');
+      var baseBtn  = document.createElement('input');
+      baseBtn.type = 'button';
+      var animeBtns = document.getElementById('animeBtns');
+      for(var key in animeMap) {
+        var chapters = animeMap[key];
+        for(var num in chapters) {
+          var animeObject = chapters[num];
+          var animeBtn = baseBtn.cloneNode();
+          animeBtn.value = key +'_'+num;
+          animeBtn.addEventListener('click', function(evt){
+            return animeBtnClickHandler(evt, animeObject);
+          }());
+          animeBtns.appendChild(animeBtn);
+        }
+        animeBtns.appendChild(br.cloneNode());
+      }
+
+      var startBtn = document.getElementById('startBtn');
+      startBtn.addEventListener('click', function(){
+        render.start();
+      }, false);
+      var stopBtn = document.getElementById('stopBtn');
+      stopBtn.addEventListener('click', function(){
+        render.stop();
+      }, false);
+
+      function animeBtnClickHandler(evt, object) {
+        return function(evt) {
+          var instance = new object(render);
+          instance.init();
+        };
+      }
+    })();
+  </script>
+</body>
+</html>
