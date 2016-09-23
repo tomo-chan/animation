@@ -17,7 +17,7 @@ var Acceleration1 = (function(){
     // End
     sprite.update = function(){
       self.update();
-    }
+    };
     this.sprite = sprite;
     this.addChild();
   };

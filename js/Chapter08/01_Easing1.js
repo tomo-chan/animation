@@ -24,7 +24,7 @@ var Easing1 = (function(){
     var self = this;
     sprite.update = function(){
       self.update(this);
-    }
+    };
     this.addChild(sprite);
   };
   p.update = function(sprite){

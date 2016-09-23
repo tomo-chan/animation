@@ -8,6 +8,7 @@ var Sprite = (function(){
     this.rotation  = 0;
     this.scaleX    = 1;
     this.scaleY    = 1;
+    this.visible   = true;
     this.eventList = {};
   };
   Sprite.prototype.getBounds = function() {
@@ -27,14 +28,14 @@ var Sprite = (function(){
     this.context.rotate(this.rotation);
     this.context.scale(this.scaleX, this.scaleY);
     if(typeof this.update === 'function') { this.update(); }
-    if(typeof this.draw   === 'function') { this.draw();   }
+    if(typeof this.draw   === 'function' && this.visible) { this.draw(); }
     this.context.restore();
   };
   Sprite.prototype.addEventListener = function(type, func) {
-    if(!type || !(typeof type === 'string')) {
+    if(!type || typeof type !== 'string') {
       throw new Error('Invalid type');
     }
-    if(!func || !(typeof func === 'function')) {
+    if(!func || typeof func !== 'function') {
       throw new Error('Invalid function');
     }
     var events = this.eventList[type];
@@ -56,12 +57,12 @@ var Sprite = (function(){
       return;
     }
     events = events.filter(function(v, i){
-      return !(v === func);
+      return (v !== func);
     });
     this.eventList = events;
   };
   Sprite.prototype.fire = function(type, evt) {
-    if(!type || !(typeof type === 'string')) {
+    if(!type || typeof type !== 'string') {
       throw new Error('Invalid type');
     }
     var events = this.eventList[type];

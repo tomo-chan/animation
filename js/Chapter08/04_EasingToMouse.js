@@ -21,7 +21,7 @@ var EasingToMouse = (function(){
     var self = this;
     sprite.update = function(){
       self.update(this);
-    }
+    };
     this.addChild(sprite);
   };
   EasingToMouse.prototype.update = function(sprite){

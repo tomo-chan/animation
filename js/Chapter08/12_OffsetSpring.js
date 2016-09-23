@@ -25,7 +25,7 @@ var OffsetSpring = (function(){
     var self = this;
     this.sprite.update = function(){
       self.update(this);
-    }
+    };
     this.addChild(this.sprite);
   };
   p.update = function(sprite){

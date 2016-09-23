@@ -26,7 +26,7 @@ var MultiSpring = (function(){
     var self = this;
     this.ball.update = function(){
       self.update(this);
-    }
+    };
     this.addChild(this.ball);
     for(var i = 0; i < this.numHandles; i++) {
       var sprite = new Ball();

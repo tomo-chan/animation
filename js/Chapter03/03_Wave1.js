@@ -18,7 +18,7 @@ var Wave1 = (function(){
     var self = this;
     sprite.update = function(){
       self.update();
-    }
+    };
     this.sprite = sprite;
     this.addChild();
   };

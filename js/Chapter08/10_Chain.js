@@ -42,7 +42,7 @@ var Chain = (function(){
     var sprite = new Sprite();
     sprite.update = function(){
       self.update(this);
-    }
+    };
     this.addChild(sprite);
   };
   p.update = function(sprite){

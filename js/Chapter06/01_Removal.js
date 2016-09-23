@@ -21,7 +21,7 @@ var Removal = (function(){
       var self = this;
       sprite.update = function(){
         self.update(this);
-      }
+      };
       this.addChild(sprite);
     }
   };

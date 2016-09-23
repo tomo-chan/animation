@@ -18,7 +18,7 @@ var Bobbing = (function(){
     var self = this;
     sprite.update = function(){
       self.update();
-    }
+    };
     this.sprite = sprite;
     this.addChild();
   };
