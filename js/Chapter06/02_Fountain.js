@@ -12,6 +12,9 @@ var Fountain = (function(){
   Fountain.prototype.constructor = Fountain;
   Fountain.prototype.init = function(){
     //Start
+    var update = function(){
+        self.update(this);
+      };
     for(var i = 0; i < this.count; i++) {
       var sprite = new Ball();
       sprite.x  = this.x;
@@ -20,9 +23,7 @@ var Fountain = (function(){
       sprite.vy = Math.random() * -10 - 10;
       // End
       var self = this;
-      sprite.update = function(){
-        self.update(this);
-      };
+      sprite.update = update;
       this.addChild(sprite);
     }
   };

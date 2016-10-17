@@ -1,12 +1,13 @@
 var Arrow = (function(){
-  var Arrow = function(canvas){
-    Sprite.call(this, canvas);
+  var Super = Sprite;
+  var Arrow = function(){
+    Super.call(this);
     this.lineDash = [1, 0, 1];
     this.color    = '#ffff00';
   };
-  Arrow.prototype = Object.create(Sprite.prototype);
-  Arrow.prototype.constructor = Arrow;
-  Arrow.prototype.getBounds = function(){
+  var Sub = Super.prototype.inherit.call(Super, Arrow);
+  var p = Sub.prototype;
+  p.getBounds = function(){
     return {
       "x": this.x - 50,
       "y": this.y - 50,
@@ -14,7 +15,7 @@ var Arrow = (function(){
       "height": 100
     };
   };
-  Arrow.prototype.draw = function(){
+  p.draw = function(){
     this.context.fillStyle = this.color;
     this.context.setLineDash(this.lineDash);
     this.context.beginPath();
@@ -29,5 +30,5 @@ var Arrow = (function(){
     this.context.stroke();
     this.context.fill();
   }
-  return Arrow;
+  return Sub;
 })();

@@ -1,14 +1,15 @@
 var Ship = (function(){
-  var Ship = function(canvas){
-    Sprite.call(this, canvas);
+  var Super = Sprite;
+  var Ship = function(){
+    Super.call(this);
     this.lineDash = [1, 0, 1];
     this.color    = '#ffff00';
     this.width    = 25;
     this.height   = 20;
   };
-  Ship.prototype = Object.create(Sprite.prototype);
-  Ship.prototype.constructor = Ship;
-  Ship.prototype.getBounds = function(){
+  var Sub = Super.prototype.inherit.call(Super, Ship);
+  var p = Sub.prototype;
+  p.getBounds = function(){
     return {
       "x": this.x - this.width / 2,
       "y": this.y - this.height / 2,
@@ -16,7 +17,7 @@ var Ship = (function(){
       "height": this.height
     };
   };
-  Ship.prototype.draw = function(){
+  p.draw = function(){
     this.context.fillStyle = this.color;
     this.context.setLineDash(this.lineDash);
     this.context.beginPath();
@@ -34,5 +35,5 @@ var Ship = (function(){
       this.context.stroke();
     }
   };
-  return Ship;
+  return Sub;
 })();

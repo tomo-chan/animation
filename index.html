@@ -17,10 +17,15 @@
     <span id="info"></span>
   </div>
   <script src="/js/Render.js" type="text/javascript"></script>
+  <script src="/js/Object/RootObject.js" type="text/javascript"></script>
   <script src="/js/Object/Sprite.js" type="text/javascript"></script>
   <script src="/js/Object/Arrow.js" type="text/javascript"></script>
   <script src="/js/Object/Ball.js" type="text/javascript"></script>
   <script src="/js/Object/Ship.js" type="text/javascript"></script>
+  <script src="/js/Object/Tree.js" type="text/javascript"></script>
+  <script src="/js/Object/Point3D.js" type="text/javascript"></script>
+  <script src="/js/Object/Triangle.js" type="text/javascript"></script>
+  <script src="/js/Object/Light.js" type="text/javascript"></script>
   <script src="/js/ChapterBase.js" type="text/javascript"></script>
   <script src="/js/Chapter03/01_RotateToMouse.js" type="text/javascript"></script>
   <script src="/js/Chapter03/02_Bobbing.js" type="text/javascript"></script>
@@ -60,6 +65,15 @@
   <script src="/js/Chapter09/01_ObjectHitTest.js" type="text/javascript"></script>
   <script src="/js/Chapter15/01_Perspective1.js" type="text/javascript"></script>
   <script src="/js/Chapter15/02_Perspective2.js" type="text/javascript"></script>
+  <script src="/js/Chapter15/07_Fireworks.js" type="text/javascript"></script>
+  <script src="/js/Chapter15/08_Trees.js" type="text/javascript"></script>
+  <script src="/js/Chapter15/09_Trees2.js" type="text/javascript"></script>
+  <script src="/js/Chapter16/01_Line3D1.js" type="text/javascript"></script>
+  <script src="/js/Chapter16/02_Line3D2.js" type="text/javascript"></script>
+  <script src="/js/Chapter16/03_Square3D.js" type="text/javascript"></script>
+  <script src="/js/Chapter16/06_triangles.js" type="text/javascript"></script>
+  <script src="/js/Chapter16/07_cube.js" type="text/javascript"></script>
+  <script src="/js/Chapter16/08_Cylinder.js" type="text/javascript"></script>
   <script type="text/javascript">
     (function(){
       var canvas   = document.getElementById('canvas');
@@ -111,6 +125,16 @@
       animeMap.C15 = {};
       animeMap.C15[1]  = Perspective1;
       animeMap.C15[2]  = Perspective2;
+      animeMap.C15[7]  = Fireworks;
+      animeMap.C15[8]  = Trees;
+      animeMap.C15[9]  = Trees2;
+      animeMap.C16 = {};
+      animeMap.C16[1]  = Line3D1;
+      animeMap.C16[2]  = Line3D2;
+      animeMap.C16[3]  = Square3D;
+      animeMap.C16[6]  = Triangles;
+      animeMap.C16[7]  = Cube;
+      animeMap.C16[8]  = Cylinder;
 
       var br = document.createElement('br');
       var baseBtn  = document.createElement('input');

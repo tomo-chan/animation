@@ -1,13 +1,17 @@
 var ChapterBase = (function(){
+  var Super = RootObject;
   var ChapterBase = function(render){
     if(!(this instanceof ChapterBase)) {
       throw new Error('Please use new!');
     }
+    Super.call();
     this.render  = render;
     this.sprite  = undefined;
     this.sprites = [];
     this.mouseX  = 0;
     this.mouseY  = 0;
+
+    this.render.addContent(this);
 
     var self = this;
     function getMouseInfo(evt) {
@@ -35,7 +39,8 @@ var ChapterBase = (function(){
       self.onKeyUp(evt);
     }, false);
   };
-  var p = ChapterBase.prototype;
+  var Sub = Super.prototype.inherit.call(Super, ChapterBase);
+  var p = Sub.prototype;
   p.width = function(){
     return this.render.canvas.width;
   };
@@ -64,10 +69,12 @@ var ChapterBase = (function(){
     if(sprite) {
       this.render.removeChild(sprite);
       this.sprites = this.sprites.filter(function(v, i){
-        return !(v === sprite);
+        return v !== sprite;
       });
     }
   };
+  p.before = function(){};
+  p.after = function(){};
   p.destory = function() {
     for(var i = this.sprites.length - 1; i <= 0; i--) {
       this.removeChild(this.sprites[i]);
@@ -110,6 +117,6 @@ var ChapterBase = (function(){
     } else {
       return false;
     }
-  }
-  return ChapterBase;
+  };
+  return Sub;
 })();
